@@ -1,10 +1,10 @@
 import express from 'express';
-import { getTests, getTest, triggerTest } from '../controllers/testController';
+import { getTests, triggerTest, getTest } from '../controllers/testController';
 
 const router = express.Router();
 
-router.get('/api/test:id', getTest);
-router.get('/api/tests', getTests);
-router.post('/api/tests', triggerTest);
+router.get('/:id', getTest);
+router.get('/', getTests);
+router.post('/', triggerTest);
 
 export default router;
