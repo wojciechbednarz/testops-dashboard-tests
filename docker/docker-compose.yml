@@ -1,0 +1,10 @@
+services:
+  app:
+    image: testops-dashboard-tests:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
