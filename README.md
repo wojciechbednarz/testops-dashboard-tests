@@ -15,8 +15,10 @@ An application enabling you to run tests and process the results.
 
 ```bash
 npm run build
+```
 
 ### Run the app
 
 ```bash
 npm run dev
+```
