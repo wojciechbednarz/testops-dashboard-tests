@@ -1,7 +1,22 @@
-```
-testops-dashboard-tests is an application enabling possibility to run the test and process the results.
-Backend: Node.js, Express
-Frontend: React
-Test: Playwright
-Reporting: Allure
-```
+# testops-dashboard-tests
+
+An application enabling you to run tests and process the results.
+
+## Tech Stack
+
+- **Backend:** Node.js, Express  
+- **Frontend:** React  
+- **Testing:** Playwright  
+- **Reporting:** Allure  
+
+## Getting Started
+
+### Build the application
+
+```bash
+npm run build
+
+### Run the app
+
+```bash
+npm run dev

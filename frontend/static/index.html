@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestOps Dashboard</title>
+  <style>
+    .status-badge {
+      display: inline-block;
+      padding: 0.3em 0.6em;
+      border-radius: 0.5em;
+      font-size: 0.9em;
+      font-weight: bold;
+      color: white;
+    }
+    .status-pass {
+      background-color: #4CAF50;
+    }
+    .status-fail {
+      background-color: #F44336;
+    }
+  </style>
+</head>
+<body>
+  <header>TestOps Dashboard project</header>
+  <img src="/static/project_logo_small.png" alt="Project logo" />
+  <div id="app">App content here</div>
+  <h1>Test Run Status</h1>
+  <div id="statusBadge" class="status-badge">Loading...</div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

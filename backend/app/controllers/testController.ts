@@ -12,8 +12,14 @@ export interface TestRun {
 let testRuns: TestRun[] = [];
 
 export const getTests = (req: Request, res: Response, next: NextFunction): void => {
-  res.json(testRuns);
-  return;
+  const sqlDatabase = new SQLDatabase();
+  sqlDatabase.db.all("SELECT * FROM test_runs", (err, rows) => {
+    if (err) {
+      res.status(500).json({ message: 'Database error', error: err.message });
+      return;
+    }
+    res.json(rows);
+  });
 };
 
 export const getTest = (req: Request, res: Response, next: NextFunction): void => {
