@@ -23,5 +23,6 @@ npm run dev
 ```
 
 To copy static files from stc to dist:
+```
 "build": "tsc -p . && cpx \"static/**/*\" dist/static",
 ```
