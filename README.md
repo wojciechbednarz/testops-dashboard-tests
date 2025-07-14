@@ -5,7 +5,7 @@ An application enabling you to run tests and process the results.
 ## Tech Stack
 
 - **Backend:** Node.js, Express  
-- **Frontend:** React  
+- **Frontend:** Pure JS/TS + HTML  
 - **Testing:** Playwright  
 - **Reporting:** Allure  
 
@@ -19,8 +19,6 @@ npm run build
 
 ### Run the app
 ```
-
-```bash
 npm run dev
 ```
 
