@@ -24,10 +24,23 @@
 <body>
   <header>TestOps Dashboard project</header>
   <img src="/static/project_logo_small.png" alt="Project logo" />
-  <div id="app">App content here</div>
   <h1>Test Run Status</h1>
+  <ul id="testList"></ul>
   <div id="statusBadge" class="status-badge">Loading...</div>
-
+  <script>
+    fetch('http://localhost:3000/api/tests').then(res => {
+      return res.json();
+    }).
+    then(data=>{
+      data.forEach(element => {
+        const markup = `<li>${element.name}</li>`
+        document.querySelector('#testList').insertAdjacentHTML('beforeend', markup);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  </script>
   <script type="module" src="./main.js"></script>
 </body>
 </html>

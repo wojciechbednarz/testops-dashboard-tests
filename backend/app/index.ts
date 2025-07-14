@@ -11,11 +11,11 @@ app.use(express.json());
 app.use('/api/tests', testRoutes);
 
 // Serve static files (e.g., JS, CSS) from frontend build directory
-app.use('/static', express.static(path.join(__dirname, '../../frontend/dist/static')));
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
 // Serve index.html on root path
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/dist/static/index.html'));
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
 });
 
 app.listen(PORT, () => {

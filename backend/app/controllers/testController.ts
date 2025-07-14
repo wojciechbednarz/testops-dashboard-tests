@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { SQLDatabase } from '../config/db';
+import { generateTestStatusRandomly,generateTestDurationRandomly } from '../../../utils/aux_methods';
 
 export interface TestRun {
   id: string;
@@ -42,8 +43,8 @@ export const triggerTest = (req: Request, res: Response, next: NextFunction): vo
   const newTest = {
     id: Date.now().toString(),
     name: `Test-${Math.floor(Math.random() * 10000)}`,
-    status: 'running',
-    duration: null,
+    status: generateTestStatusRandomly(),
+    duration: generateTestDurationRandomly(),
     triggeredAt: new Date().toISOString()
   };
 

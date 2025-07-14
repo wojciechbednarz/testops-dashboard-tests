@@ -1,10 +1,11 @@
 services:
-  app:
-    image: testops-dashboard-tests:latest
+  backend:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: docker/Dockerfile.backend  # if you named it differently, otherwise just Dockerfile
     ports:
-      - "8080:80"
-    environment:
-      - NODE_ENV=production
+      - "3000:3000"
+    volumes:
+      - ../backend:/app
+      - /app/node_modules
+    command: npm run dev

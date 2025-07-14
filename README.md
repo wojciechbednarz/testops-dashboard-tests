@@ -15,8 +15,9 @@ An application enabling you to run tests and process the results.
 
 ```bash
 npm run build
-
-### Run the app
+```
 
 ```bash
-npm run dev
+To copy static files from stc to dist:
+"build": "tsc -p . && cpx \"static/**/*\" dist/static",
+```
