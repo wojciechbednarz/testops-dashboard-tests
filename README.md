@@ -56,8 +56,8 @@ Playwright is used for both API and GUI tests. Tests are organized and can be ru
 npx playwright test
 ```
 
-```bash
 ### Build the application
+```bash
 npm run build
 ```
 
