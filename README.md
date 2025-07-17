@@ -13,7 +13,7 @@ This project aims to provide a **centralized dashboard** for visualizing test ex
 ## Key Features
 
 - Automated **GUI and API testing** with Playwright
-- Interactive **charts** using Observable Plot and Chart.js
+- Interactive **charts** using Observable Plot
 - Clean and intuitive frontend with modular navigation
 - Test result persistence using **SQLite**
 - Prettier formatting for consistent code styling
@@ -32,7 +32,6 @@ This project aims to provide a **centralized dashboard** for visualizing test ex
 - SQLite3
 - Playwright (`@playwright/test`)
 - Observable Plot
-- Chart.js
 
 ### Frontend (`frontend`)
 - TypeScript
