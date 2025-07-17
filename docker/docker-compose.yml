@@ -2,10 +2,16 @@ services:
   backend:
     build:
       context: ..
-      dockerfile: docker/Dockerfile.backend  # if you named it differently, otherwise just Dockerfile
+      dockerfile: docker/Dockerfile.backend
     ports:
       - "3000:3000"
     volumes:
       - ../backend:/app
       - /app/node_modules
     command: npm run dev
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+    - "8080:80"

@@ -1,5 +1,4 @@
 import { Database } from "sqlite3";
-import { TestRun } from "../controllers/testController";
 const sqlite3 = require("sqlite3").verbose();
 
 export class SQLDatabase {
