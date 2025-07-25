@@ -3,6 +3,7 @@ import { renderTestRuns } from "./views/TestRunsView.js";
 import { renderReports } from "./views/ReportsView.js";
 import { renderSettings } from "./views/SettingsView.js";
 import { plotResults } from "./views/DataVisualizationView.js";
+import { renderLogin } from "./views/LoginView.js";
 
 const path = window.location.pathname;
 
@@ -31,5 +32,12 @@ if (path.endsWith("/data_visualization.html")) {
   const container = document.getElementById("data-visualization");
   if (container) {
     plotResults(container);
+  }
+}
+
+if (path.endsWith("/login.html")) {
+  const container = document.getElementById("login");
+  if (container) {
+    renderLogin(container);
   }
 }

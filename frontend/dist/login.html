@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Settings - TestOps Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="/index.html">Dashboard</a></li>
+        <li><a href="/data_visualization.html">Data Visualization</a></li>
+        <li><a href="/tests.html">Test Runs</a></li>
+        <li><a href="/reports.html">Reports</a></li>
+        <li><a href="/settings.html">Settings</a></li>
+      </ul>
+    </nav>
+    <h1 class="testops-title">Login</h1>
+    <p class="testops-subtitle">Login to TestOps Dashboard</p>
+  </header>
+
+  <div id="login" class ="wrapper">
+    <form action="">
+        <div class="input-box">
+            <input type="text" placeholder="Username" required>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Password" required>
+        </div>
+        <button id="login-button" type="submit">Login</button>
+        <p class="testops-subtitle">Don't have an account? <a href="#" onclick="alert('Sign up not implemented yet.')">Sign up</a></p>
+        <p class="testops-subtitle">Forgot your password? <a href="#" onclick="alert('Password reset not implemented yet.')">Reset it</a></p>
+        <p class="testops-subtitle">Back to <a href="/index.html">Dashboard</a></p>
+        <p class="testops-subtitle">Need help? <a href="#" onclick="alert('Help page not available yet.')">Contact support</a></p>
+    </form>
+  </div>
+
+  <footer>
+    <small>© 2025 TestOps Dashboard. All rights reserved.</small>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+.testops-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3rem;               /* Big and bold */
+  font-weight: 700;              /* Bold */
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
+  -webkit-background-clip: text; /* Clip the gradient to the text */
+  -webkit-text-fill-color: transparent; /* Make text itself transparent */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* subtle shadow */
+  text-align: center;
+  margin: 1.5rem 0;
+  user-select: none;             /* Prevent accidental text selection */
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.testops-title:hover {
+  background: linear-gradient(90deg, #50e3c2, #4a90e2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: default;
+}
+
+.testops-subtitle {
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.test-entry {
+  display: flex;
+  justify-content: space-between; /* Or use 'gap' if you prefer */
+  align-items: center;
+  padding: 0.5rem 1rem;
+  max-width: 500px; /* Optional: control line length */
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.status-badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  min-width: 90px; /* Optional: for consistent width */
+  text-align: center;
+}
+
+/* Colors */
+.status-pass {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-fail {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status-running {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.project-logo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+html,body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ecebdf;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Allow the main content area to grow and push footer down */
+body > #settings,
+body > #data-visualization,
+body > #testList,
+body > #reports {
+  flex: 1;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  width: 200px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  display: block;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+  background-color: #007bff;
+  color: white;
+}
+
+.nav-menu li a.active {
+  background-color: #0056b3;
+  color: white;
+}
+
+footer {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
+
+.reports {
+  text-align: center;
+}
+
+#settings {
+  margin-left: 220px; /* nav-menu is 200px + some spacing */
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
+  -webkit-background-clip: text; /* Clip the gradient to the text */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* subtle shadow */
+  text-align: center;
+  margin: 1.5rem 0;
+  user-select: none;             /* Prevent accidental text selection */
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+
+.light-mode {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  margin-top: 5;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  border: 1px solid #999;
+  margin-top: 5;
+}
+
+#theme-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+#data-visualization {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+#data-visualization svg {
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+.testops-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3rem;               /* Big and bold */
+  font-weight: 700;              /* Bold */
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
+  -webkit-background-clip: text; /* Clip the gradient to the text */
+  -webkit-text-fill-color: transparent; /* Make text itself transparent */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* subtle shadow */
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.testops-subtitle {
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.testops-title:hover {
+  background: linear-gradient(90deg, #50e3c2, #4a90e2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: default;
+}
+
+.testops-logo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+.testops-logo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.testops-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.testops-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
+
+input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px; /* Limit width for better readability */
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh; /* Full viewport height */
+  background-color: #ecebdf; /* Light background */
+}

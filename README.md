@@ -19,7 +19,7 @@ This project aims to provide a **centralized dashboard** for visualizing test ex
 - Prettier formatting for consistent code styling
 - Auto-reload backend via **nodemon**
 - RESTful backend built with Express.js
-- Planned integration with **Allure**, **Prometheus**, **Grafana**, and **GitHub Actions**
+- Integration with **Allure**, **Prometheus**, **Grafana**, and **GitHub Actions**
 
 ---
 
@@ -54,6 +54,12 @@ Playwright is used for both API and GUI tests. Tests are organized and can be ru
 
 ```bash
 npx playwright test
+```
+
+Then, if Allure is installed, use:
+```bash
+allure generate allure-results --clean -o allure-report
+allure open allure-report
 ```
 
 ### Build the application

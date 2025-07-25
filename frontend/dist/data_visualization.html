@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Visualization - TestOps Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <!-- Add Observable Plot from CDN -->
+  <script type="module">
+    import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+    window.Plot = Plot;
+  </script>
+</head>
+<!-- rest of your HTML -->
+<body>
+  <header>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="/index.html">Dashboard</a></li>
+        <li><a href="/tests.html">Test Runs</a></li>
+        <li><a href="/reports.html">Reports</a></li>
+        <li><a href="/settings.html">Settings</a></li>
+      </ul>
+    </nav>
+    <h1 class="testops-title">Data Visualization</h1>
+  </header>
+
+  <div id="data-visualization"></div>
+  
+  <footer>
+    <small>© 2025 TestOps Dashboard. All rights reserved.</small>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

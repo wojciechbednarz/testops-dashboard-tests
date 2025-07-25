@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","209","Open Dashboard Page","chromium","Thu Jul 24 23:49:34 CEST 2025","failed","Thu Jul 24 23:49:34 CEST 2025","","openDashboard.spec.js","",""
+"","1002","Open Dashboard Page","firefox","Thu Jul 24 23:49:34 CEST 2025","failed","Thu Jul 24 23:49:35 CEST 2025","","openDashboard.spec.js","",""
+"","649","Open Dashboard Page","webkit","Thu Jul 24 23:49:34 CEST 2025","failed","Thu Jul 24 23:49:34 CEST 2025","","openDashboard.spec.js","",""
