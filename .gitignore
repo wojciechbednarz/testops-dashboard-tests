@@ -1,20 +1,31 @@
 
 # Dependencies
 node_modules/
+package-lock.json
 
 # Playwright
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/results/
 
-# Database
+# Database files
 *.db
-allure-results/
+testops.db
+backend/testops.db
+backend/*.db
 
 # Build outputs
 dist/
 build/
+frontend/dist/
+
+# Test results and reports
+allure-results/
+allure-report/
+test-results/
+playwright-report/
 
 # Logs
 *.log
@@ -43,3 +54,26 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Temporary folders
+tmp/
+temp/
