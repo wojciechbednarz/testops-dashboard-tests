@@ -1,31 +1,38 @@
-import { Expect, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
 
 export class ReportsPage extends BasePage {
-  private baseUrl: string;
-  private pageTitle: string;
+  private readonly baseUrl: string = "http://localhost:3000/reports.html";
+  private readonly pageTitle: string = ".testops-title";
 
-  constructor(page: Page, expect: Expect) {
-    super(page, expect);
-    this.baseUrl = "http://localhost:3000/reports.html";
-    this.pageTitle = ".testops-title";
+  constructor(page: Page) {
+    super(page);
   }
 
-  async getAverageDuration(element: string) {
-    const check = this.checkIfElementVisible(element, this.expect);
+  async goToReportsPage() {
+    await this.page.goto(this.baseUrl);
+  }
+
+  async getAverageDuration(element: string): Promise<string | null> {
+    const isVisible = await this.isElementVisible(element);
+    if (!isVisible) {
+      console.error(`Element ${element} is not visible`);
+      return null;
+    }
+    
     const allListElements = await this.page.$$("//ul//li");
     for (let element of allListElements) {
       let elemTextContent = await element.textContent();
       if (elemTextContent?.includes("Avg")) {
-        const regex = "Avgsduration:s(d.d+)";
-        const search = elemTextContent.search(regex);
-        if (search) {
-          return search;
+        const regex = /Avg\s+duration:\s+(\d+\.\d+)/;
+        const match = elemTextContent.match(regex);
+        if (match) {
+          return match[1];
         } else {
-          console.error(`There was problem 
-                        looking for a ${element} in ${allListElements}`);
+          console.error(`Could not parse duration from: ${elemTextContent}`);
         }
       }
     }
+    return null;
   }
 }

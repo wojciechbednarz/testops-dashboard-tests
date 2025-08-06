@@ -3,29 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Test Runs</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <title>Test Runs - TestOps Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
-  <header>
-    <nav>
+  <div class="layout-container">
+    <!-- Hamburger button -->
+    <button class="hamburger-btn" id="hamburger-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">TestOps</h2>
+      </div>
       <ul class="nav-menu">
-        <li><a href="/index.html">Dashboard</a></li>
-        <li><a href="/data_visualization.html">Data Visualization</a></li>
-        <li><a href="/reports.html">Reports</a></li>
-        <li><a href="/settings.html">Settings</a></li>
-        <li><a href="/login.html">Login</a></li>
+        <li><a href="/" class="nav-link">📊 Dashboard</a></li>
+        <li><a href="/tests.html" class="nav-link active">🧪 Test Runs</a></li>
+        <li><a href="/data_visualization.html" class="nav-link">📈 Data Visualization</a></li>
+        <li><a href="/reports.html" class="nav-link">📋 Reports</a></li>
+        <li><a href="/settings.html" class="nav-link">⚙️ Settings</a></li>
+        <li><a href="/login.html" class="nav-link">🔐 Login</a></li>
       </ul>
     </nav>
-    <h1 class="testops-title">TestOps Test Runs</h1>
-    <p class="testops-subtitle" id="testList">Manage your test runs efficiently</p>
-    <p class="testops-subtitle">Your centralized testing control center</p>
-  </header>
 
-  <footer>
-    <small>© 2025 TestOps Dashboard. All rights reserved.</small>
-  </footer>
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-  <script type="module" src="main.js"></script>
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <header class="top-header">
+        <h1 class="testops-title">TestOps Test Runs</h1>
+      </header>
+
+      <main class="content-area">
+        <div id="testList">
+          <!-- Test runs will be loaded here dynamically -->
+        </div>
+      </main>
+
+      <footer class="bottom-footer">
+        <small>© 2025 TestOps Dashboard. All rights reserved.</small>
+      </footer>
+    </div>
+  </div>
+
+  <script type="module" src="/static/main.js"></script>
 </body>
 </html>

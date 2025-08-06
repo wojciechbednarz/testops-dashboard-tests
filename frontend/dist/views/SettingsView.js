@@ -1,6 +1,9 @@
-import { createTestSuiteType, setLightOrDarkMode, } from "../components/SettingsElements.js";
+import { createTestSuiteType, } from "../components/SettingsElements.js";
+import { toggleTheme, getStoredTheme } from "../utils/theme.js";
 export function renderSettings(container) {
-    console.log(window.location.pathname);
+    // Test Suite Selection
+    const testSuiteSection = document.createElement("div");
+    testSuiteSection.className = "settings-section";
     const dropDownLabel = document.createElement("label");
     dropDownLabel.textContent = "Select Test Suite:";
     dropDownLabel.htmlFor = "test-suite-select";
@@ -23,21 +26,30 @@ export function renderSettings(container) {
         outputContainer.innerHTML = ""; // clear previous
         outputContainer.appendChild(rendered);
     });
+    testSuiteSection.appendChild(dropDownLabel);
+    testSuiteSection.appendChild(select);
+    testSuiteSection.appendChild(outputContainer);
+    // Theme Toggle Section
+    const themeSection = document.createElement("div");
+    themeSection.className = "settings-section";
+    const themeLabel = document.createElement("h3");
+    themeLabel.textContent = "Theme Settings";
+    const currentTheme = getStoredTheme();
+    const themeStatus = document.createElement("p");
+    themeStatus.textContent = `Current theme: ${currentTheme}`;
+    themeStatus.id = "theme-status";
     const themeButton = document.createElement("button");
-    themeButton.textContent = "Toggle Theme";
-    themeButton.id = 'theme-button';
-    let currentTheme = "light";
-    const themeContainer = setLightOrDarkMode(currentTheme);
-    themeContainer.id = "theme-box";
+    themeButton.textContent = `Switch to ${currentTheme === 'light' ? 'Dark' : 'Light'} Mode`;
+    themeButton.id = 'theme-toggle-button';
+    themeButton.className = 'theme-button';
     themeButton.addEventListener("click", () => {
-        currentTheme = currentTheme === "light" ? "dark" : "light";
-        themeContainer.classList.toggle("light-mode");
-        themeContainer.classList.toggle("dark-mode");
-        themeContainer.textContent = `Mode: ${currentTheme}`;
+        const newTheme = toggleTheme();
+        themeStatus.textContent = `Current theme: ${newTheme}`;
+        themeButton.textContent = `Switch to ${newTheme === 'light' ? 'Dark' : 'Light'} Mode`;
     });
-    container.appendChild(dropDownLabel);
-    container.appendChild(select);
-    container.appendChild(outputContainer);
-    container.appendChild(themeButton);
-    container.appendChild(themeContainer);
+    themeSection.appendChild(themeLabel);
+    themeSection.appendChild(themeStatus);
+    themeSection.appendChild(themeButton);
+    container.appendChild(testSuiteSection);
+    container.appendChild(themeSection);
 }

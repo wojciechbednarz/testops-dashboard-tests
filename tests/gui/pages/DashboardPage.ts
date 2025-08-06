@@ -2,12 +2,11 @@ import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class DashboardPage extends BasePage{
-  public projectLogoSrc = "/static/project_logo_small.png";
-  private baseUrl: string;
+  public readonly projectLogoSrc = "/static/project_logo_small.png";
+  private readonly baseUrl: string = 'http://localhost:3000/';
 
   constructor(page: Page) {
     super(page);
-    this.baseUrl = 'http://localhost:3000/index.html';
   }
 
     async goToDashboardPage() {
@@ -24,10 +23,6 @@ export class DashboardPage extends BasePage{
 
     async isPageTitleVisible(pageTitle: string) {
         return await this.page.locator(pageTitle).isVisible();
-    }
-
-    async waitForPageToLoad() {
-        await this.page.waitForLoadState('load');
     }
 
 

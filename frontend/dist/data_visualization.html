@@ -4,33 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Data Visualization - TestOps Dashboard</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/static/styles.css" />
   <!-- Add Observable Plot from CDN -->
   <script type="module">
     import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
     window.Plot = Plot;
   </script>
 </head>
-<!-- rest of your HTML -->
 <body>
-  <header>
-    <nav>
+  <div class="layout-container">
+    <!-- Hamburger button -->
+    <button class="hamburger-btn" id="hamburger-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">TestOps</h2>
+      </div>
       <ul class="nav-menu">
-        <li><a href="/index.html">Dashboard</a></li>
-        <li><a href="/tests.html">Test Runs</a></li>
-        <li><a href="/reports.html">Reports</a></li>
-        <li><a href="/settings.html">Settings</a></li>
+        <li><a href="/" class="nav-link">📊 Dashboard</a></li>
+        <li><a href="/tests.html" class="nav-link">🧪 Test Runs</a></li>
+        <li><a href="/data_visualization.html" class="nav-link active">📈 Data Visualization</a></li>
+        <li><a href="/reports.html" class="nav-link">📋 Reports</a></li>
+        <li><a href="/settings.html" class="nav-link">⚙️ Settings</a></li>
+        <li><a href="/login.html" class="nav-link">🔐 Login</a></li>
       </ul>
     </nav>
-    <h1 class="testops-title">Data Visualization</h1>
-  </header>
 
-  <div id="data-visualization"></div>
-  
-  <footer>
-    <small>© 2025 TestOps Dashboard. All rights reserved.</small>
-  </footer>
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-  <script type="module" src="main.js"></script>
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <header class="top-header">
+        <h1 class="testops-title">Data Visualization</h1>
+      </header>
+
+      <main class="content-area">
+        <div id="data-visualization">
+          <!-- Visualization charts will be loaded here -->
+        </div>
+      </main>
+
+      <footer class="bottom-footer">
+        <small>© 2025 TestOps Dashboard. All rights reserved.</small>
+      </footer>
+    </div>
+  </div>
+
+  <script type="module" src="/static/main.js"></script>
 </body>
 </html>

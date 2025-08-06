@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestOps Dashboard - Complete Application Overview</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            font-size: 1.5em;
+        }
+        h3 {
+            color: #27ae60;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        h4 {
+            color: #8e44ad;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+        .emoji {
+            font-size: 1.2em;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            color: #e74c3c;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            line-height: 1.4;
+        }
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .tech-item {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .command-box {
+            background: #2c3e50;
+            color: #2ecc71;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            margin: 10px 0;
+        }
+        .flow-step {
+            background: #e8f5e8;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 3px solid #27ae60;
+        }
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .component-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .component-card h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .api-endpoint {
+            background: #e3f2fd;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 3px 0;
+            font-family: monospace;
+            color: #1976d2;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .feature-item {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .feature-item h4 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .nav-flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .nav-item {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 2px solid #6c757d;
+            text-align: center;
+            min-width: 120px;
+        }
+        .workflow-step {
+            background: #fff5ee;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ff6b35;
+        }
+        .summary-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1><span class="emoji">🚀</span> TestOps Dashboard - Complete Application Overview</h1>
+
+<div class="section">
+    <h2><span class="emoji">🎯</span> Application Purpose</h2>
+    <p>The TestOps Dashboard is a comprehensive test management and visualization platform that allows teams to trigger, monitor, and analyze automated test runs. It provides real-time insights into test performance, historical trends, and detailed reporting capabilities.</p>
+</div>
+
+<div class="section">
+    <h2><span class="emoji">🏗️</span> Architecture Overview</h2>
+    
+    <h3>Technology Stack</h3>
+    <div class="tech-stack">
+        <div class="tech-item"><strong>Backend:</strong> Node.js + Express.js + TypeScript</div>
+        <div class="tech-item"><strong>Frontend:</strong> TypeScript + HTML/CSS + JavaScript (ES Modules)</div>
+        <div class="tech-item"><strong>Database:</strong> SQLite3 for persistent data storage</div>
+        <div class="tech-item"><strong>Visualization:</strong> Observable Plot for charts and graphs</div>
+        <div class="tech-item"><strong>Testing:</strong> Playwright for automated browser testing</div>
+        <div class="tech-item"><strong>Build System:</strong> TypeScript compiler (tsc)</div>
+    </div>
+
+    <h3>Project Structure</h3>
+    <pre>testops-dashboard-tests/
+├── backend/                 # Server-side application
+│   ├── app/
+│   │   ├── controllers/     # API route handlers
+│   │   ├── config/          # Database configuration
+│   │   ├── routes/          # Express route definitions
+│   │   ├── utils/           # Helper functions
+│   │   └── index.ts         # Main server entry point
+│   ├── dist/                # Compiled JavaScript output
+│   └── package.json         # Backend dependencies
+├── frontend/                # Client-side application
+│   ├── src/
+│   │   ├── components/      # Reusable UI components
+│   │   ├── views/           # Page-specific logic
+│   │   ├── utils/           # Client utilities (theme, sidebar)
+│   │   └── main.ts          # Frontend entry point
+│   ├── dist/                # Compiled frontend + static assets
+│   └── package.json         # Frontend dependencies
+├── tests/                   # Playwright test suites
+└── utils/                   # Shared utilities</pre>
+</div>
+
+<div class="section">
+    <h2><span class="emoji">🚀</span> How to Run the Application</h2>
+    
+    <h3>1. Start Backend Server</h3>
+    <div class="command-box">cd backend<br>npm install          # Install dependencies<br>npx tsc              # Compile TypeScript<br>npm start            # Start server on http://localhost:3000</div>
+    
+    <h3>2. Compile Frontend (if making changes)</h3>
+    <div class="command-box">cd frontend<br>npm install          # Install dependencies<br>npx tsc              # Compile TypeScript to dist/</div>
+    
+    <h3>3. Run Tests</h3>
+    <div class="command-box"># From project root<br>npm test            # Run Playwright tests</div>
+    
+    <h3>4. Access Application</h3>
+    <div class="highlight">
+        <ul>
+            <li>Open browser to: <code>http://localhost:3000</code></li>
+            <li>Backend serves both API endpoints and static frontend files</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="emoji">🔗</span> Component Relationships & Data Flow</h2>
+    
+    <h3>Backend Components</h3>
+    <div class="component-grid">
+        <div class="component-card">
+            <h4>1. Server (backend/app/index.ts)</h4>
+            <p><strong>Purpose:</strong> Main Express server that handles both API requests and serves static files</p>
+            <p><strong>Key Functions:</strong></p>
+            <ul>
+                <li>Serves HTML pages (<code>/</code>, <code>/tests.html</code>, <code>/reports.html</code>, etc.)</li>
+                <li>Provides API endpoints (<code>/api/tests</code>)</li>
+                <li>Handles CORS for cross-origin requests</li>
+                <li>Serves static assets (<code>/static/*</code>)</li>
+            </ul>
+        </div>
+        
+        <div class="component-card">
+            <h4>2. Database Layer (backend/app/config/db.ts)</h4>
+            <p><strong>Purpose:</strong> SQLite database abstraction layer following SOLID principles</p>
+            <p><strong>Key Methods:</strong></p>
+            <ul>
+                <li><code>createData()</code>: Insert new test results</li>
+                <li><code>getAllData()</code>: Retrieve all test records</li>
+                <li><code>getData(id)</code>: Get specific test by ID</li>
+            </ul>
+            <p><strong>Data Model:</strong> Test runs with ID, name, status, duration, timestamp</p>
+        </div>
+        
+        <div class="component-card">
+            <h4>3. Controllers (backend/app/controllers/testController.ts)</h4>
+            <p><strong>Purpose:</strong> Handle HTTP requests and coordinate with database</p>
+            <p><strong>API Endpoints:</strong></p>
+            <div class="api-endpoint">GET /api/tests: Fetch all test results</div>
+            <div class="api-endpoint">GET /api/tests/:id: Get specific test</div>
+            <div class="api-endpoint">POST /api/tests: Trigger new test (generates random data)</div>
+        </div>
+        
+        <div class="component-card">
+            <h4>4. Utilities (backend/app/utils/aux_methods.ts)</h4>
+            <p><strong>Purpose:</strong> Helper functions for generating test data</p>
+            <p><strong>Functions:</strong> Random status generation, duration calculation</p>
+        </div>
+    </div>
+
+    <h3>Frontend Components</h3>
+    <div class="component-grid">
+        <div class="component-card">
+            <h4>1. Main Application (frontend/src/main.ts)</h4>
+            <p><strong>Purpose:</strong> Application entry point and router</p>
+            <p><strong>Key Functions:</strong></p>
+            <ul>
+                <li>Initializes theme system on page load</li>
+                <li>Sets up sidebar navigation functionality</li>
+                <li>Routes to appropriate page views based on URL</li>
+                <li>Manages active navigation highlighting</li>
+            </ul>
+        </div>
+        
+        <div class="component-card">
+            <h4>2. Page Views (frontend/src/views/)</h4>
+            <p>Each view handles a specific page's functionality:</p>
+            <ul>
+                <li><strong>DashboardView.ts:</strong> Fetches test data from API, creates test run cards, displays in responsive grid layout</li>
+                <li><strong>TestRunsView.ts:</strong> Lists all test runs in tabular format with status badges</li>
+                <li><strong>ReportsView.ts:</strong> Calculates aggregate statistics and displays summary cards</li>
+                <li><strong>SettingsView.ts:</strong> Theme toggle functionality and test suite selection</li>
+                <li><strong>DataVisualizationView.ts:</strong> Creates charts using Observable Plot</li>
+            </ul>
+        </div>
+        
+        <div class="component-card">
+            <h4>3. Reusable Components (frontend/src/components/)</h4>
+            <ul>
+                <li><strong>StatusBadge.ts:</strong> Creates colored status indicators (passed=green, failed=red, running=yellow)</li>
+                <li><strong>TestRunCard.ts:</strong> Individual test result card component with status badge</li>
+            </ul>
+        </div>
+        
+        <div class="component-card">
+            <h4>4. Utilities (frontend/src/utils/)</h4>
+            <ul>
+                <li><strong>theme.ts:</strong> Global theme management system with localStorage persistence</li>
+                <li><strong>sidebar.ts:</strong> Hamburger menu functionality and responsive sidebar behavior</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="emoji">🎨</span> User Interface & Navigation</h2>
+    
+    <h3>Layout System</h3>
+    <ul>
+        <li><strong>Responsive Design:</strong> Mobile-first approach with desktop enhancements</li>
+        <li><strong>Sidebar Navigation:</strong> Collapsible sidebar with hamburger menu</li>
+        <li><strong>Theme Support:</strong> Light and dark mode with smooth transitions</li>
+        <li><strong>Grid Layouts:</strong> CSS Grid for test cards, Flexbox for navigation</li>
+    </ul>
+
+    <h3>Page Structure</h3>
+    <p>All pages follow consistent layout:</p>
+    <pre>&lt;div class="layout-container"&gt;
+  &lt;button class="hamburger-btn"&gt;     &lt;!-- Mobile menu toggle --&gt;
+  &lt;nav class="sidebar"&gt;              &lt;!-- Navigation sidebar --&gt;
+  &lt;div class="sidebar-overlay"&gt;      &lt;!-- Mobile overlay --&gt;
+  &lt;div class="main-content"&gt;         &lt;!-- Page content area --&gt;
+    &lt;header class="top-header"&gt;      &lt;!-- Page title --&gt;
+    &lt;main class="content-area"&gt;      &lt;!-- Dynamic content --&gt;
+    &lt;footer class="bottom-footer"&gt;   &lt;!-- Copyright info --&gt;
+&lt;/div&gt;</pre>
+
+    <h3>Navigation Flow</h3>
+    <div class="nav-flow">
+        <div class="nav-item"><strong>Dashboard</strong><br><code>/</code><br>Main overview with test run cards</div>
+        <div class="nav-item"><strong>Test Runs</strong><br><code>/tests.html</code><br>Detailed list of all tests</div>
+        <div class="nav-item"><strong>Data Visualization</strong><br><code>/data_visualization.html</code><br>Charts and graphs</div>
+        <div class="nav-item"><strong>Reports</strong><br><code>/reports.html</code><br>Aggregate statistics and summaries</div>
+        <div class="nav-item"><strong>Settings</strong><br><code>/settings.html</code><br>Theme toggle and configuration</div>
+        <div class="nav-item"><strong>Login</strong><br><code>/login.html</code><br>Authentication interface (UI only)</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="emoji">📊</span> Data Flow & API Integration</h2>
+    
+    <h3>Test Lifecycle</h3>
+    <div class="flow-step">1. <strong>Trigger Test:</strong> POST to <code>/api/tests</code> creates new test record</div>
+    <div class="flow-step">2. <strong>Store Data:</strong> Backend saves to SQLite database</div>
+    <div class="flow-step">3. <strong>Display Results:</strong> Frontend fetches via GET <code>/api/tests</code></div>
+    <div class="flow-step">4. <strong>Update UI:</strong> Views render data using components</div>
+    <div class="flow-step">5. <strong>Real-time Updates:</strong> Manual refresh to see new data</div>
+
+    <h3>Frontend-Backend Communication</h3>
+    <pre>// Example API call in DashboardView
+const res = await fetch('http://localhost:3000/api/tests');
+const testRuns = await res.json();
+// Render test cards...</pre>
+
+    <h3>Database Schema</h3>
+    <pre>Test Results Table:
+- id: string (timestamp-based)
+- name: string (auto-generated)
+- status: 'passed' | 'failed' | 'running'
+- duration: string | null (seconds)
+- triggeredAt: ISO timestamp</pre>
+</div>
+
+<div class="section">
+    <h2><span class="emoji">🎯</span> Key Features & Functionality</h2>
+    
+    <div class="feature-list">
+        <div class="feature-item">
+            <h4>1. Test Management</h4>
+            <ul>
+                <li><strong>Trigger Tests:</strong> Create new test runs via API</li>
+                <li><strong>View Results:</strong> Browse all test history</li>
+                <li><strong>Status Tracking:</strong> Visual indicators for test states</li>
+                <li><strong>Performance Metrics:</strong> Duration tracking and averages</li>
+            </ul>
+        </div>
+        
+        <div class="feature-item">
+            <h4>2. Visualization & Reporting</h4>
+            <ul>
+                <li><strong>Dashboard Cards:</strong> Individual test run overview</li>
+                <li><strong>Aggregate Statistics:</strong> Pass rates, averages, totals</li>
+                <li><strong>Charts:</strong> Visual trends using Observable Plot</li>
+                <li><strong>Recent Activity:</strong> Latest test results</li>
+            </ul>
+        </div>
+        
+        <div class="feature-item">
+            <h4>3. User Experience</h4>
+            <ul>
+                <li><strong>Responsive Design:</strong> Works on desktop and mobile</li>
+                <li><strong>Theme System:</strong> Light/dark mode with persistence</li>
+                <li><strong>Smooth Navigation:</strong> Hamburger menu with animations</li>
+                <li><strong>Visual Feedback:</strong> Hover effects and transitions</li>
+            </ul>
+        </div>
+        
+        <div class="feature-item">
+            <h4>4. Technical Features</h4>
+            <ul>
+                <li><strong>Type Safety:</strong> Full TypeScript implementation</li>
+                <li><strong>Modular Architecture:</strong> SOLID principles, separation of concerns</li>
+                <li><strong>Browser Testing:</strong> Playwright integration for automated tests</li>
+                <li><strong>Build System:</strong> TypeScript compilation pipeline</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="emoji">🔧</span> Development Workflow</h2>
+    
+    <h3>Making Changes</h3>
+    <div class="workflow-step">1. <strong>Backend Changes:</strong> Edit <code>.ts</code> files in <code>backend/app/</code></div>
+    <div class="workflow-step">2. <strong>Compile:</strong> Run <code>npx tsc</code> in backend directory</div>
+    <div class="workflow-step">3. <strong>Frontend Changes:</strong> Edit <code>.ts</code> files in <code>frontend/src/</code></div>
+    <div class="workflow-step">4. <strong>Compile:</strong> Run <code>npx tsc</code> in frontend directory</div>
+    <div class="workflow-step">5. <strong>Test:</strong> Restart server and refresh browser</div>
+
+    <h3>Adding New Features</h3>
+    <ul>
+        <li><strong>Backend:</strong> Add routes in <code>routes/</code>, controllers in <code>controllers/</code></li>
+        <li><strong>Frontend:</strong> Create views in <code>views/</code>, components in <code>components/</code></li>
+        <li><strong>Database:</strong> Extend database methods in <code>config/db.ts</code></li>
+        <li><strong>UI:</strong> Update HTML templates and CSS styles</li>
+    </ul>
+
+    <h3>Testing</h3>
+    <ul>
+        <li><strong>Unit Tests:</strong> Run with <code>npm test</code></li>
+        <li><strong>Manual Testing:</strong> Use browser dev tools and API endpoints</li>
+        <li><strong>End-to-End:</strong> Playwright tests cover full user workflows</li>
+    </ul>
+</div>
+
+<div class="summary-box">
+    <h2><span class="emoji">🎯</span> Summary</h2>
+    <p>The TestOps Dashboard is a full-stack TypeScript application that provides a complete test management solution. The backend serves both API endpoints and static files, while the frontend uses modern web technologies for a responsive, theme-aware interface. The application follows clean architecture principles with clear separation between data layer, business logic, and presentation, making it maintainable and extensible for future enhancements.</p>
+</div>
+
+</body>
+</html>

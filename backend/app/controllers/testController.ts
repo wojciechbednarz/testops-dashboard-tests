@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { SQLDatabase } from '../config/db';
-import { generateTestStatusRandomly,generateTestDurationRandomly } from '../../../utils/aux_methods';
+import { generateTestStatusRandomly,generateTestDurationRandomly } from '../utils/aux_methods';
 
 export interface TestRun {
   id: string;
@@ -10,16 +10,14 @@ export interface TestRun {
   triggeredAt: string;
 }
 
-let testRuns: TestRun[] = [];
-
 export const getTests = (req: Request, res: Response, next: NextFunction): void => {
   const sqlDatabase = new SQLDatabase();
-  sqlDatabase.db.all("SELECT * FROM test_runs", (err, rows) => {
+  sqlDatabase.getAllData((err: Error | null, rows: any[]) => {
     if (err) {
       res.status(500).json({ message: 'Database error', error: err.message });
       return;
     }
-    res.json(rows);
+    res.json(rows || []);
   });
 };
 
@@ -40,7 +38,7 @@ export const getTest = (req: Request, res: Response, next: NextFunction): void =
 };
 
 export const triggerTest = (req: Request, res: Response, next: NextFunction): void => {
-  const newTest = {
+  const newTest: TestRun = {
     id: Date.now().toString(),
     name: `Test-${Math.floor(Math.random() * 10000)}`,
     status: generateTestStatusRandomly(),
@@ -48,10 +46,7 @@ export const triggerTest = (req: Request, res: Response, next: NextFunction): vo
     triggeredAt: new Date().toISOString()
   };
 
-  testRuns.push(newTest);
-  console.log('Test pushed:', newTest);
-  console.log('All test runs:', testRuns);
-
+  console.log('Test triggered:', newTest);
 
   const sqlDatabase = new SQLDatabase();
   sqlDatabase.insertData(

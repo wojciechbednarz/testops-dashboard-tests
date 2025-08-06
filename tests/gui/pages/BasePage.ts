@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 
 export class BasePage {
-  public page: Page;
+  protected page: Page;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,5 +17,9 @@ export class BasePage {
 
   async getPageTitle(pageTitle: string) {
     return await this.page.locator(pageTitle).textContent();
+  }
+
+  async isElementVisible(element: string): Promise<boolean> {
+    return await this.page.locator(element).isVisible();
   }
 }
