@@ -1,0 +1,10 @@
+node_modules/
+app/
+*.ts
+tsconfig.json
+.env
+.git/
+dist/*.map
+tests/
+*.log
+.vscode/

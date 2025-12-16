@@ -7,7 +7,7 @@ export interface TestRun {
   name: string;
   status: string;
   duration: string | null;
-  triggeredAt: string;
+  triggered_at: string;
 }
 
 export const getTests = (req: Request, res: Response, next: NextFunction): void => {
@@ -43,7 +43,7 @@ export const triggerTest = (req: Request, res: Response, next: NextFunction): vo
     name: `Test-${Math.floor(Math.random() * 10000)}`,
     status: generateTestStatusRandomly(),
     duration: generateTestDurationRandomly(),
-    triggeredAt: new Date().toISOString()
+    triggered_at: new Date().toISOString()
   };
 
   console.log('Test triggered:', newTest);
@@ -54,7 +54,7 @@ export const triggerTest = (req: Request, res: Response, next: NextFunction): vo
     newTest.name,
     newTest.status,
     newTest.duration,
-    newTest.triggeredAt,
+    newTest.triggered_at,
     (err: Error | null) => {
       if (err) {
         res.status(500).json({ message: 'Database error', error: err.message });
