@@ -3,7 +3,6 @@ import { BasePage } from "./BasePage";
 
 export class TestRunsPage extends BasePage{
   private readonly baseUrl: string = "http://localhost:3000/tests.html";
-  private readonly pageTitle: string = ".testops-title";
   private readonly testRunList: string = '#testList';
   private readonly allTestCases: string = '//div[@class="test-entry"]//span';
 

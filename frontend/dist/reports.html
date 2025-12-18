@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - TestOps Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="layout-container">
+        <!-- Hamburger Menu Button -->
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <img src="/static/project_logo_small.png" alt="TestOps Dashboard Logo" class="logo">
+                <h1>TestOps Dashboard</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">📊 Dashboard</a></li>
+                <li><a href="/tests.html" class="nav-link">🧪 Test Runs</a></li>
+                <li><a href="/data_visualization.html" class="nav-link">📈 Data Visualization</a></li>
+                <li><a href="/reports.html" class="nav-link active">📋 Reports</a></li>
+                <li><a href="/settings.html" class="nav-link">⚙️ Settings</a></li>
+                <li><a href="/login.html" class="nav-link">🔐 Login</a></li>
+            </ul>
+        </nav>
+
+        <!-- Sidebar Overlay (for mobile) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header class="top-header">
+                <h1>Reports</h1>
+                <p>Comprehensive test execution summaries and analytics</p>
+            </header>
+
+            <main class="content-area">
+                <div id="reports">
+                    <div class="reports-container">
+                        <div class="reports-header">
+                            <h2>Test Reports</h2>
+                            <p>Generate and view comprehensive test execution reports</p>
+                        </div>
+                        <div class="report-actions">
+                            <button class="action-btn primary">Generate New Report</button>
+                            <button class="action-btn secondary">Export Data</button>
+                        </div>
+                        <div class="reports-grid">
+                            <div class="report-card">
+                                <h3>Daily Summary</h3>
+                                <p>Test execution summary for today</p>
+                                <div class="report-stats">
+                                    <span class="stat">Tests: --</span>
+                                    <span class="stat">Pass Rate: --%</span>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <h3>Weekly Trends</h3>
+                                <p>Performance trends over the past week</p>
+                                <div class="report-stats">
+                                    <span class="stat">Avg Duration: --s</span>
+                                    <span class="stat">Success Rate: --%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="bottom-footer">
+                <p>&copy; 2025 TestOps Dashboard. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>

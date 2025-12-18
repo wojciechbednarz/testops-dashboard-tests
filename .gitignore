@@ -30,6 +30,7 @@ build/
 .turbo
 
 # Test results and reports
+.allure/
 allure-results/
 allure-report/
 test-results/
@@ -99,6 +100,9 @@ coverage/
 # Output of 'npm pack'
 *.tgz
 
+# App versions zipped by AWS
+.zip
+
 # Yarn Integrity file
 .yarn-integrity
 
@@ -152,6 +156,7 @@ docker-compose.override.yml
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+.elasticbeanstalk/app_versions/
 
 # ========================================
 # Secrets and Sensitive Configuration

@@ -3,7 +3,6 @@ import { BasePage } from "./BasePage";
 
 export class ReportsPage extends BasePage {
   private readonly baseUrl: string = "http://localhost:3000/reports.html";
-  private readonly pageTitle: string = ".testops-title";
 
   constructor(page: Page) {
     super(page);
@@ -13,6 +12,13 @@ export class ReportsPage extends BasePage {
     await this.page.goto(this.baseUrl);
   }
 
+  async calculateAverage(element: string[]): Promise<string | null> {
+    
+    array.forEach(element => {
+      
+    });
+  }
+
   async getAverageDuration(element: string): Promise<string | null> {
     const isVisible = await this.isElementVisible(element);
     if (!isVisible) {
@@ -20,14 +26,14 @@ export class ReportsPage extends BasePage {
       return null;
     }
     
-    const allListElements = await this.page.$$("//ul//li");
+    const allListElements = await this.page.$$(element);
     for (let element of allListElements) {
       let elemTextContent = await element.textContent();
       if (elemTextContent?.includes("Avg")) {
         const regex = /Avg\s+duration:\s+(\d+\.\d+)/;
-        const match = elemTextContent.match(regex);
+        let match = elemTextContent.match(regex);
         if (match) {
-          return match[1];
+          return this.calculateAverage(match);
         } else {
           console.error(`Could not parse duration from: ${elemTextContent}`);
         }

@@ -42,7 +42,7 @@ This project provides a **centralized dashboard** for visualizing test execution
 ### 🖥️ **Backend** (`backend/`)
 - **Node.js** with Express 5
 - **TypeScript** for type safety
-- **SQLite3** for data persistence
+- **PostgreSQL** for data persistence
 - **CORS** for cross-origin requests
 - **Nodemon** for development hot reload
 
@@ -194,7 +194,181 @@ npm run build         # Compile TypeScript once
 npm run watch         # Watch mode for development
 ```
 
----
+# Manual Install EB CLI
+```sh
+git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+python aws-elastic-beanstalk-cli-setup/scripts/ebcli_installer.py
+echo 'export PATH="/
+bash_profile && source ~/.bashrc
+```
+# AWS EB setup
+## Install EB CLI via pip
+```sh
+pip install awsebcli --upgrade
+```
+
+## Initialize EB
+```sh
+cd backend
+eb init
+```
+
+## Create environment with public load balancer
+```sh
+eb create my-env-name --instance-types t3.micro
+```
+
+## Set Environment Variables (DO NOT store in .ebextensions for security)
+```sh
+eb setenv \
+  DB_HOST=your-rds-endpoint.rds.amazonaws.com \
+  RDS_DB_NAME=testops \
+  RDS_USERNAME=postgres \
+  RDS_PASSWORD='YourSecurePassword' \
+  RDS_PORT=5432
+```
+
+## Verify Environment Variables
+```sh
+eb printenv
+```
+
+## Deploy Application
+```sh
+eb deploy
+```
+
+## Check Status
+```sh
+eb status
+eb health
+eb logs
+```
+
+## AWS RDS PostgreSQL Setup
+
+### 1. Get VPC and Subnet Information
+```sh
+# Get EB instance details
+aws ec2 describe-instances \
+  --filters "Name=tag:elasticbeanstalk:environment-name,Values=YOUR_ENV_NAME" \
+  --query 'Reservations[*].Instances[*].[InstanceId,VpcId,SubnetId,PublicIpAddress]' \
+  --output table
+
+# List all subnets in your VPC (need at least 2 in different AZs for RDS)
+aws ec2 describe-subnets \
+  --filters "Name=vpc-id,Values=YOUR_VPC_ID" \
+  --query 'Subnets[*].[SubnetId,AvailabilityZone,CidrBlock]' \
+  --output table
+```
+
+### 2. Create DB Subnet Group
+```sh
+aws rds create-db-subnet-group \
+  --db-subnet-group-name my-app-db-subnet-group \
+  --db-subnet-group-description "Subnet group for database" \
+  --subnet-ids subnet-xxxxx subnet-yyyyy \
+  --tags Key=Name,Value=my-app-db-subnet-group
+```
+
+### 3. Create RDS Security Group
+```sh
+aws ec2 create-security-group \
+  --group-name my-app-rds-sg \
+  --description "Security group for RDS PostgreSQL" \
+  --vpc-id YOUR_VPC_ID
+```
+
+### 4. Allow PostgreSQL Access from EB Security Group
+```sh
+# Get EB security group ID from the instance details above
+aws ec2 authorize-security-group-ingress \
+  --group-id YOUR_RDS_SECURITY_GROUP_ID \
+  --protocol tcp \
+  --port 5432 \
+  --source-group YOUR_EB_SECURITY_GROUP_ID
+```
+
+### 5. Create RDS Instance
+```sh
+aws rds create-db-instance \
+  --db-instance-identifier my-app-db \
+  --db-instance-class db.t3.micro \
+  --engine postgres \
+  --engine-version 15.4 \
+  --master-username postgres \
+  --master-user-password 'YourSecurePassword' \
+  --allocated-storage 20 \
+  --db-subnet-group-name my-app-db-subnet-group \
+  --vpc-security-group-ids YOUR_RDS_SECURITY_GROUP_ID \
+  --publicly-accessible false \
+  --db-name testops \
+  --backup-retention-period 7 \
+  --storage-encrypted \
+  --tags Key=Name,Value=my-app-database
+```
+
+### 6. Wait for RDS to be Available
+```sh
+aws rds describe-db-instances \
+  --db-instance-identifier my-app-db \
+  --query 'DBInstances[0].[DBInstanceStatus,Endpoint.Address,Endpoint.Port]' \
+  --output table
+```
+
+### 7. Create Database (if not created during RDS setup)
+```sh
+# SSH into EB instance
+eb ssh
+
+# Connect to RDS and create database
+export PGPASSWORD='YourPassword'
+psql -h your-rds-endpoint.rds.amazonaws.com -U postgres -d postgres -c 'CREATE DATABASE testops;'
+exit
+```
+
+### 8. Test Connection
+```sh
+# From EB instance
+eb ssh
+export PGPASSWORD='YourPassword'
+psql -h your-rds-endpoint.rds.amazonaws.com -U postgres -d testops -c 'SELECT NOW();'
+```
+
+### Querying the database
+```sh
+cd backend && PGPASSWORD='YOURPASSWORD123!' psql -h mydb.amazonaws.com -U postgres -d mydb -c "SELECT * FROM test_runs ORDER BY triggered_at DESC LIMIT 5;"
+```
+
+## Local Development with Docker
+
+### 1. Create .env.local file
+```sh
+cp .env.example .env.local
+# Edit .env.local with your local settings
+```
+
+### 2. Run with Docker Compose
+```sh
+cd docker
+docker-compose up
+```
+
+The docker-compose.yml now uses environment variables, so you can override defaults via .env file.
+
+## Environment Variable Strategy
+
+**Local Development (Docker):**
+- Create `.env.local` (gitignored)
+- Override docker-compose defaults
+
+**AWS Elastic Beanstalk:**
+- Use `eb setenv` (encrypted at rest, not in git)
+- Never commit secrets to `.ebextensions`
+
+**CI/CD Pipelines:**
+- Use GitHub Secrets / GitLab CI Variables
+- Inject at deployment time
 
 ## 📖 Application Features
 
@@ -223,7 +397,7 @@ npm run watch         # Watch mode for development
 
 ### **Backend Architecture**
 - **Express.js** server with TypeScript
-- **SQLite** database with abstraction layer
+- **PostgreSQL** database with abstraction layer
 - **RESTful API** design with proper error handling
 - **CORS** enabled for cross-origin requests
 - **Static file serving** for frontend assets
@@ -237,7 +411,7 @@ npm run watch         # Watch mode for development
 
 ### **Data Flow**
 1. Frontend makes API calls to backend endpoints
-2. Backend processes requests and interacts with SQLite database
+2. Backend processes requests and interacts with PostgreSQL database
 3. Results are returned as JSON and rendered in the UI
 4. Real-time updates through manual refresh (can be enhanced with WebSockets)
 

@@ -9,7 +9,7 @@ interface TestResult {
   name: string;
   status: TestStatus;
   duration: string | null;
-  triggeredAt: string;
+  triggered_at: string;
 }
 
 export async function fetchResults(): Promise<TestResult[]> {

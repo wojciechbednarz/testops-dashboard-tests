@@ -10,7 +10,7 @@ The TestOps Dashboard is a comprehensive test management and visualization platf
 ### Technology Stack
 - **Backend**: Node.js + Express.js + TypeScript
 - **Frontend**: TypeScript + HTML/CSS + JavaScript (ES Modules)
-- **Database**: SQLite3 for persistent data storage
+- **Database**: PostgreSQL for persistent data storage
 - **Visualization**: Observable Plot for charts and graphs
 - **Testing**: Playwright for automated browser testing
 - **Build System**: TypeScript compiler (tsc)
@@ -83,7 +83,7 @@ npm test            # Run Playwright tests
   - Serves static assets (`/static/*`)
 
 #### 2. Database Layer (backend/app/config/db.ts)
-- **Purpose**: SQLite database abstraction layer following SOLID principles
+- **Purpose**: PostgreSQL database abstraction layer following SOLID principles
 - **Key Methods**:
   - `createData()`: Insert new test results
   - `getAllData()`: Retrieve all test records
@@ -200,7 +200,7 @@ All pages follow consistent layout:
 
 ### Test Lifecycle
 1. **Trigger Test**: POST to `/api/tests` creates new test record
-2. **Store Data**: Backend saves to SQLite database
+2. **Store Data**: Backend saves to PostgreSQL database
 3. **Display Results**: Frontend fetches via GET `/api/tests`
 4. **Update UI**: Views render data using components
 5. **Real-time Updates**: Manual refresh to see new data
@@ -220,7 +220,7 @@ Test Results Table:
 - name: string (auto-generated)
 - status: 'passed' | 'failed' | 'running'
 - duration: string | null (seconds)
-- triggeredAt: ISO timestamp
+- triggered_at: ISO timestamp
 ```
 
 ---

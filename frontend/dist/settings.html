@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - TestOps Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="layout-container">
+        <!-- Hamburger Menu Button -->
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <img src="/static/project_logo_small.png" alt="TestOps Dashboard Logo" class="logo">
+                <h1>TestOps Dashboard</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">📊 Dashboard</a></li>
+                <li><a href="/tests.html" class="nav-link">🧪 Test Runs</a></li>
+                <li><a href="/data_visualization.html" class="nav-link">📈 Data Visualization</a></li>
+                <li><a href="/reports.html" class="nav-link">📋 Reports</a></li>
+                <li><a href="/settings.html" class="nav-link active">⚙️ Settings</a></li>
+                <li><a href="/login.html" class="nav-link">🔐 Login</a></li>
+            </ul>
+        </nav>
+
+        <!-- Sidebar Overlay (for mobile) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header class="top-header">
+                <h1>Settings</h1>
+                <p>Configure your dashboard preferences and test suite options</p>
+            </header>
+
+            <main class="content-area">
+                <div id="settings">
+                    <!-- Settings will be populated by JavaScript -->
+                </div>
+            </main>
+
+            <footer class="bottom-footer">
+                <p>&copy; 2025 TestOps Dashboard. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>

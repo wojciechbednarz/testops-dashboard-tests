@@ -5,11 +5,11 @@ export interface TestRun {
   name: string;
   status: string;
   duration: string | null;
-  triggeredAt: string;
+  triggered_at: string;
 }
 
 export function TestRunCard(testRun: TestRun): HTMLElement {
-  const { id, name, status, duration, triggeredAt } = testRun;
+  const { id, name, status, duration, triggered_at } = testRun;
   
   const card = document.createElement("div");
   card.className = "test-run-card";
@@ -37,7 +37,7 @@ export function TestRunCard(testRun: TestRun): HTMLElement {
   durationParagraph.className = "test-run-duration";
 
   const triggeredAtParagraph = document.createElement("p");
-  const date = new Date(triggeredAt);
+  const date = new Date(triggered_at);
   triggeredAtParagraph.textContent = `Triggered At: ${date.toLocaleString()}`;
   triggeredAtParagraph.className = "test-run-triggered";
 

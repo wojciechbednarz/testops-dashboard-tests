@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Test Runs page
   if (path.endsWith("/tests.html")) {
-    const container = document.getElementById("testList");
+    const container = document.getElementById("test-runs-list");
     if (container) {
       renderTestRuns(container);
     }

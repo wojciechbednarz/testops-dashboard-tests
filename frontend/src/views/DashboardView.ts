@@ -5,7 +5,7 @@ export interface TestRun {
   name: string;
   status: string;
   duration: string | null;
-  triggeredAt: string;
+  triggered_at: string;
 }
 
 export async function DashboardView(): Promise<HTMLElement> {

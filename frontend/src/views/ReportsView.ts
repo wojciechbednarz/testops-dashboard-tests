@@ -6,7 +6,7 @@ interface TestResult {
   name: string;
   status: TestStatus;
   duration: string | null;
-  triggeredAt: string;
+  triggered_at: string;
 }
 
 async function fetchResults(): Promise<TestResult[]> {
@@ -117,7 +117,7 @@ export async function renderReports(container: HTMLElement): Promise<void> {
         <span class="test-name">${test.name}</span>
         <span class="test-status">${test.status}</span>
         <span class="test-duration">${test.duration ? test.duration + 's' : 'N/A'}</span>
-        <span class="test-date">${new Date(test.triggeredAt).toLocaleDateString()}</span>
+        <span class="test-date">${new Date(test.triggered_at).toLocaleDateString()}</span>
       `;
       recentList.appendChild(testItem);
     });

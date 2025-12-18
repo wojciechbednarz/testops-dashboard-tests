@@ -3,4 +3,4 @@ WORKDIR /app
 RUN npm install -g http-server
 COPY frontend/ .
 EXPOSE 8080
-CMD ["http-server", "-p", "8080"]
+CMD ["http-server", "dist", "-p", "8080"]
